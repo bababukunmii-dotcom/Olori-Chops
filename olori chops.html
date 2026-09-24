@@ -1,0 +1,340 @@
+html<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olori Chops - Sweet Escape of the Ordinary</title>
+    <style>
+        :root {
+            --primary: #d4a373;
+            --primary-dark: #b98454;
+            --secondary: #faedcd;
+            --dark: #333333;
+            --light: #fefae0;
+            --white: #ffffff;
+            --shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--white);
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            color: var(--primary-dark);
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-style: italic;
+            color: #666;
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1.8fr 1.2fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: var(--dark);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+
+        .menu-section, .order-section {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .menu-item {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            background: #fff;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        }
+
+        .menu-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .menu-item .price {
+            color: var(--primary-dark);
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .quantity-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-qty {
+            background-color: var(--secondary);
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background 0.2s;
+        }
+
+        .btn-qty:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .qty-val {
+            font-weight: bold;
+            width: 25px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-dark);
+        }
+
+        .summary-box {
+            background-color: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border-top: 2px dashed #ddd;
+            padding-top: 10px;
+            margin-top: 10px;
+            color: var(--primary-dark);
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%;
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 20px;
+            text-align: center;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .btn-submit:hover {
+            background-color: #128C7E;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            color: #666;
+            font-size: 0.9rem;
+            background-color: var(--white);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Olori Chops</h1>
+        <p>Sweet Escape of the Ordinary</p>
+    </header>
+
+    <div class="container">
+        <!-- Products Display Left -->
+        <section class="menu-section">
+            <h2>Our Delicacies</h2>
+            <div class="menu-grid" id="menu-grid">
+                <!-- Injected via JavaScript -->
+            </div>
+        </section>
+
+        <!-- Form & Summary Right -->
+        <section class="order-section">
+            <h2>Place Your Order</h2>
+            <form id="orderForm">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="date">Delivery / Pickup Date</label>
+                    <input type="date" id="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="notes">Special Notes (Optional)</label>
+                    <textarea id="notes" rows="3" placeholder="e.g., Spicy preferences, packaging instructions..."></textarea>
+                </div>
+
+                <h3>Order Summary</h3>
+                <div class="summary-box">
+                    <div id="summary-items">
+                        <p style="color: #888; font-style: italic;">No items selected yet.</p>
+                    </div>
+                    <div class="total-row">
+                        <span>Total:</span>
+                        <span id="grand-total">₦0</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">Order via WhatsApp</button>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Olori Chops. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const WHATSAPP_NUMBER = "2348055557729"; // International format for 08055557729
+
+        const products = [
+            { id: "spring-roll", name: "Spring Roll", price: 250 },
+            { id: "samosa", name: "Samosa", price: 250 },
+            { id: "puff-puff", name: "Puff Puff", price: 100 },
+            { id: "meat-pie", name: "Meat Pie", price: 800 },
+            { id: "chicken-pie", name: "Chicken Pie", price: 900 },
+            { id: "sausage-roll", name: "Sausage Roll", price: 500 }
+        ];
+
+        const cart = {};
+
+        // Initialize cart quantities
+        products.forEach(p => cart[p.id] = 0);
+
+        function renderMenu() {
+            const grid = document.getElementById("menu-grid");
+            grid.innerHTML = products.map(p => `
+                <div class="menu-item">
+                    <h3>${p.name}</h3>
+                    <p class="price">₦${p.price.toLocaleString()}</p>
+                    <div class="quantity-controls">
+                        <button type="button" class="btn-qty" onclick="updateQty('${p.id}', -1)">-</button>
+                        <span class="qty-val" id="qty-${p.id}">0</span>
+                        <button type="button" class="btn-qty" onclick="updateQty('${p.id}', 1)">+</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        window.updateQty = function(id, change) {
+            cart[id] = Math.max(0, cart[id] + change);
+            document.getElementById(`qty-${id}`).innerText = cart[id];
+            updateSummary();
+        };
+
+        function updateSummary() {
+            const summaryContainer = document.getElementById("summary-items");
+            let total = 0;
+            let itemsHtml = "";
+
+            products.forEach(p => {
+                const qty = cart[p.id];
+                if (qty > 0) {
+                    const itemTotal = qty * p.price;
+                    total += itemTotal;
+                    itemsHtml += `
+                        <div class="summary-item">
+                            <span>${p.name} (x${qty})</span>
+                            <span>₦${itemTotal.toLocaleString()}</span>
+                        </div>
+                    `;
+                }
+            });
+
+            if (itemsHtml === "") {
+                summaryContainer.innerHTML = '<p style="color: #888; font-style: italic;">No items selected yet.</p>';
+            } else {
+                summaryContainer.innerHTML = itemsHtml;
+            }
